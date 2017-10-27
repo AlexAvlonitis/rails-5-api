@@ -9,7 +9,6 @@ gem 'active_model_serializers'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'mysql2'
-gem 'omniauth'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.1'
 
