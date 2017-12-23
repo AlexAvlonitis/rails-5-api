@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'active_model_serializers'
-gem 'devise'
 gem 'devise_token_auth'
 gem 'mysql2'
 gem 'puma', '~> 3.7'

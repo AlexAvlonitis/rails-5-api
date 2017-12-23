@@ -197,7 +197,6 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   byebug
-  devise
   devise_token_auth
   dotenv-rails
   factory_bot_rails (~> 4.0)
