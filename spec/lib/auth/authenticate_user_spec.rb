@@ -20,7 +20,7 @@ RSpec.describe Auth::AuthenticateUser do
       it 'raises an authentication error' do
         auth_user = invalid_auth_obj.call
         expect(auth_user.errors[:user_authentication])
-          .to include /Invalid credentials/
+          .to include 'Invalid credentials'
       end
     end
   end

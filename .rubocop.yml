@@ -5,4 +5,25 @@ AllCops:
     - config.ru
     - lib/**/*.rake
   Exclude:
-    - db/schema.rb
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'app/**/*'
+Naming/FileName:
+  Exclude:
+    - 'Gemfile'
+Metrics/BlockLength:
+  Max: 63
+  Exclude:
+    - 'spec/**/*'
+Metrics/MethodLength:
+  Max: 11
+  Exclude:
+    - 'spec/**/*'
+Metrics/LineLength:
+  Max: 112
+  Exclude:
+    - 'spec/**/*'
