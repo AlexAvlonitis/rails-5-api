@@ -4,6 +4,7 @@ Rails.application.routes.draw do
                                                        default: true) do
       post 'user/sign_up', to: 'users#create'
       post 'user/sign_in', to: 'sessions#create'
+      resources :users, only: :index
     end
   end
 end

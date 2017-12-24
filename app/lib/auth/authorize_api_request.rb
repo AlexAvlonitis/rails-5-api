@@ -20,16 +20,15 @@ module Auth
     end
 
     def decoded_auth_token
-      @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
+      @decoded_auth_token ||= JsonWebToken.decode(valid_http_auth_header)
+    end
+
+    def valid_http_auth_header
+      http_auth_header.present? ? http_auth_header.split(' ').last : nil
     end
 
     def http_auth_header
-      if headers['Authorization'].present?
-        return headers['Authorization'].split(' ').last
-      else
-        errors.add(:token, 'Missing token')
-      end
-      nil
+      headers['Authorization']
     end
   end
 end
