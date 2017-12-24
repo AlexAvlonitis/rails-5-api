@@ -6,15 +6,13 @@ module ExceptionHandler
   class MissingToken < StandardError; end
   class InvalidToken < StandardError; end
   class ExpiredSignature < StandardError; end
-  class DecodeError < StandardError; end
 
   included do
     rescue_from ActiveRecord::RecordInvalid, with: :four_twenty_two
     rescue_from ExceptionHandler::AuthenticationError, with: :unauthorized_request
     rescue_from ExceptionHandler::MissingToken, with: :four_twenty_two
     rescue_from ExceptionHandler::InvalidToken, with: :four_twenty_two
-    rescue_from ExceptionHandler::ExpiredSignature, with: :unauthorized_request
-    rescue_from ExceptionHandler::DecodeError, with: :unauthorized_request
+    rescue_from ExceptionHandler::ExpiredSignature, with: :four_twenty_two
 
     rescue_from ActiveRecord::RecordNotFound do |e|
      render json: { message: e.message }, status: :not_found

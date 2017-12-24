@@ -16,7 +16,8 @@ module Auth
 
     def user
       @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
-      @user || errors.add(:token, 'Invalid token') && nil
+    rescue ActiveRecord::RecordNotFound => e
+      raise ExceptionHandler::InvalidToken, "Invalid token #{e.message}"
     end
 
     def decoded_auth_token
@@ -24,7 +25,8 @@ module Auth
     end
 
     def valid_http_auth_header
-      http_auth_header.present? ? http_auth_header.split(' ').last : nil
+      return http_auth_header.split(' ').last if http_auth_header.present?
+      raise ExceptionHandler::MissingToken, 'Authentication token is missing'
     end
 
     def http_auth_header
