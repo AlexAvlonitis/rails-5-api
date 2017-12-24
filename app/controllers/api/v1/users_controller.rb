@@ -12,13 +12,11 @@ module Api
         user = User.new(user_params)
 
         if user.save
-          auth_token = ::Auth::AuthenticateUser.new(
-            user_params[:email], user_params[:password]
-          ).call.result
+          auth_token = ::Auth::AuthenticateUser.call(user_params)
 
           response = {
             message: 'User created successfully',
-            auth_token: auth_token
+            auth_token: auth_token.result
           }
           render json: response, status: :created
         else

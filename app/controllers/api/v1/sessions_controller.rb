@@ -14,10 +14,8 @@ module Api
       end
 
       def authenticate(login_params)
-        email = login_params[:email]
-        password = login_params[:password]
+        command = ::Auth::AuthenticateUser.call(login_params)
 
-        command = ::Auth::AuthenticateUser.call(email, password)
         if command.success?
           render json: {
             access_token: command.result,
