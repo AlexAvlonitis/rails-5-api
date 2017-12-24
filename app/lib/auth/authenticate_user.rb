@@ -21,6 +21,7 @@ module Auth
         user
       else
         errors.add :user_authentication, 'Invalid credentials'
+        nil
       end
     end
   end

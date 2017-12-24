@@ -10,10 +10,7 @@ module Api
       private
 
       def login_params
-        params.require(:user).permit(
-          :email,
-          :password
-        )
+        params.permit(:email, :password)
       end
 
       def authenticate(login_params)
