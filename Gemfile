@@ -6,13 +6,17 @@ git_source(:github) do |repo_name|
 end
 
 gem 'active_model_serializers'
-gem 'devise_token_auth'
+gem 'bcrypt'
+gem 'jwt'
 gem 'mysql2'
+gem 'rack-cors', require: 'rack/cors'
+gem 'simple_command'
 gem 'puma', '~> 3.7'
-gem 'rails', '~> 5.1.1'
+gem 'rails', '~> 5.1.4'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry-rails'
   gem 'dotenv-rails'
   gem 'rubocop'
 end
