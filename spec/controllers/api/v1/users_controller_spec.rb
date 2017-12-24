@@ -4,14 +4,18 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   describe "GET #index" do
     let!(:user) { create(:user) }
     let!(:user2) { create(:user) }
+    let(:headers) { valid_headers }
 
-    before { get :index }
+    before do
+      request.headers.merge! headers
+      get :index
+    end
 
     it "returns all users" do
       users = JSON.parse(response.body)
       expect(users.count).to eq 2
-      expect(users.first['id']).to eq user['id']
-      expect(users.last['id']).to eq user2['id']
+      expect(users.first['email']).to eq user.email
+      expect(users.last['email']).to eq user2.email
     end
 
     it 'returns http status 200' do
