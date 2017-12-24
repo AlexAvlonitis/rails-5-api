@@ -21,7 +21,7 @@ RSpec.describe Auth::AuthorizeApiRequest do
           expect { invalid_request_obj.call }
             .to raise_error(
               ExceptionHandler::MissingToken,
-              "Authentication token is missing"
+              'Authentication token is missing'
             )
         end
       end

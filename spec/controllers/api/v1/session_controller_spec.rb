@@ -26,7 +26,7 @@ RSpec.describe Api::V1::SessionsController, type: :request do
 
       it 'returns an authentication token' do
         parsed_body = JSON.parse(response.body)
-        expect(parsed_body['message']).to eq "Login Successful"
+        expect(parsed_body['message']).to eq 'Login Successful'
       end
     end
 
@@ -38,7 +38,7 @@ RSpec.describe Api::V1::SessionsController, type: :request do
       it 'returns a failure message' do
         parsed_body = JSON.parse(response.body)
         expect(parsed_body.dig('error', 'user_authentication'))
-          .to include "Invalid credentials"
+          .to include 'Invalid credentials'
       end
     end
   end
