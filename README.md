@@ -61,6 +61,13 @@ curl -H "Content-Type: application/json" \
 ]
 ```
 
+## Rake Tasks
+
+**Rename/Personalize the application**
+```ruby
+rake rename[NewName]
+```
+
 ## To Do list
 - [x] Add user sign up
 - [x] Add user sign in
