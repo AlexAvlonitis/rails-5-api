@@ -9,9 +9,9 @@ gem 'active_model_serializers'
 gem 'bcrypt'
 gem 'jwt'
 gem 'mysql2'
-gem 'puma', '~> 3.7'
+gem 'puma'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2'
 gem 'simple_command'
 
 group :development, :test do

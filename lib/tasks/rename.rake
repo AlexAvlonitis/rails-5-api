@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 desc 'Rename this application'
 task :rename, [:name] => :environment do |_t, args|
   files = Dir.glob(%w[rb yml].map { |ext| Rails.root.join("**/*.#{ext}") } + %w[Rakefile])

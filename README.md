@@ -10,6 +10,7 @@
 
 ## Setup
 * bundle install
+* copy .env.example file to .env and add required values
 * rake db:setup
 
 ## Examples using curl
