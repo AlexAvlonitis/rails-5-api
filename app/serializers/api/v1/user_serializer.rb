@@ -1,6 +1,8 @@
 module Api
   module V1
-    class UserSerializer < ActiveModel::Serializer
+    class UserSerializer
+      include FastJsonapi::ObjectSerializer
+
       attributes :email
     end
   end
