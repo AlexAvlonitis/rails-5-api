@@ -28,9 +28,9 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 4.0'
+  gem 'factory_bot_rails'
   gem 'faker'
-  gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
 end
 
