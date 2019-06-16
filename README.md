@@ -27,7 +27,7 @@ Sign up success message and a JWT token
 ```json
 {
   "message":"User created successfully",
-  "auth_token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE1MTQyMjYxMDN9.ADOGnYeexJpJj8SCHZHL_JFJ3iza9MmXTyWb8wGSFws"
+  "access_token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE1MTQyMjYxMDN9.ADOGnYeexJpJj8SCHZHL_JFJ3iza9MmXTyWb8wGSFws"
 }
 ```
 
@@ -67,6 +67,11 @@ curl -H "Content-Type: application/json" \
 **Rename/Personalize the application**
 ```ruby
 rake rename[NewName]
+```
+
+## Testing
+```ruby
+bundle exec rspec
 ```
 
 ## To Do list

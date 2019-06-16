@@ -1,29 +1,27 @@
 module Api
   module V1
     class SessionsController < ApiController
-      skip_before_action :authenticate_request!, only: :create
+      skip_before_action :authenticate_request, only: :create
 
       def create
-        authenticate(login_params)
+        if authentication.success?
+          render json: {
+            access_token: authentication.result,
+            message: 'Login Successful'
+          }
+        else
+          render json: { error: authentication.errors }, status: :unauthorized
+        end
       end
 
       private
 
-      def login_params
-        params.permit(:email, :password)
+      def authentication
+        @authentication ||= ::Auth::AuthenticateUser.call(login_params)
       end
 
-      def authenticate(login_params)
-        command = ::Auth::AuthenticateUser.call(login_params)
-
-        if command.success?
-          render json: {
-            access_token: command.result,
-            message: 'Login Successful'
-          }
-        else
-          render json: { error: command.errors }, status: :unauthorized
-        end
+      def login_params
+        params.permit(:email, :password)
       end
     end
   end

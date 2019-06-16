@@ -1,10 +1,11 @@
 module Api
   module V1
     class UsersController < ApiController
-      skip_before_action :authenticate_request!, only: :create
+      skip_before_action :authenticate_request, only: :create
 
       def index
         @users ||= User.all
+
         render json: @users, status: :ok
       end
 
@@ -12,13 +13,7 @@ module Api
         user = User.new(user_params)
 
         if user.save
-          auth_token = ::Auth::AuthenticateUser.call(user_params)
-
-          response = {
-            message: 'User created successfully',
-            auth_token: auth_token.result
-          }
-          render json: response, status: :created
+          render json: success_response, status: :created
         else
           render json: user.errors, status: :unprocessable_entity
         end
@@ -28,6 +23,17 @@ module Api
 
       def user_params
         params.permit(:email, :password)
+      end
+
+      def success_response
+        {
+          message: 'User created successfully',
+          access_token: access_token.result
+        }
+      end
+
+      def access_token
+        @access_token ||= ::Auth::AuthenticateUser.call(user_params)
       end
     end
   end

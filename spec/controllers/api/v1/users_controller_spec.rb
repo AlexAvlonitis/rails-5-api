@@ -46,7 +46,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
       it 'returns an authentication token' do
         parsed_body = JSON.parse(response.body)
-        expect(parsed_body['auth_token']).to be
+        expect(parsed_body['access_token']).to be
       end
     end
 
